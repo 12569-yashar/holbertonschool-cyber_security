@@ -1,2 +1,2 @@
 #!/bin/bash
-lsb_release | cut -f2
+lsb_release -i | cut -f2
