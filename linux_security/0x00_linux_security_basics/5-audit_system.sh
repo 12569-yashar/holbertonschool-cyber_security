@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo lyns audit system
+sudo lynis audit system
