@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo netstat -atnp
+sudo ss -atnp
