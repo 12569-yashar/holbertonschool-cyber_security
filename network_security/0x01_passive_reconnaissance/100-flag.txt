@@ -1,1 +1,1 @@
-"Holberton Sec Lab - b245e9de5cb6628bc8bf34060877da01"
+b245e9de5cb6628bc8bf34060877da01
