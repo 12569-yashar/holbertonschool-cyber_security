@@ -1,1 +1,1 @@
-icmp.type == 3 && icmp.code == 2
+ip.proto == 1
