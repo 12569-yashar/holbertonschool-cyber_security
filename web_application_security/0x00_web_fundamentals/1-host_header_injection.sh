@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -i -X -H $1 $2 $3
+sudo curl -i -X -H $1 $2 $3
