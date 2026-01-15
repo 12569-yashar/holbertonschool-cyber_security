@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -i $1 $2 $3
+curl -i -X $1 $2 $3
