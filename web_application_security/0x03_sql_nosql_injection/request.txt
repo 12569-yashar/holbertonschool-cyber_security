@@ -1,0 +1,10 @@
+GET /api/a3/sql_injection/all_orders?status=paid HTTP/1.1
+Host: web0x01.hbtn
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://web0x01.hbtn/a3/sql_injection/
+Connection: close
+Cookie: session=hyTc2stmB9gdDfpEHW11OuDC7oHegFNeZ4xtm-VTROs.DaHBwzCRqb3KiWih3lA3lW563AY
+Priority: u=0
