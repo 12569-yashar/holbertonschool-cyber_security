@@ -1,1 +1,1 @@
-Flag{Hidden_Secret}
+Hidden_Secret
