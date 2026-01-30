@@ -1,1 +1,1 @@
-http://test-s3.web0x05
+test-s3.web0x05
