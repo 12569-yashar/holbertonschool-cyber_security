@@ -1,2 +1,2 @@
 #!/bin/bash
-echo  john --wordlist=/usr/share/worslists/rockyou.txt "$1" > 4-password.txt
+echo  john --wordlist=/usr/share/wordlists/rockyou.txt "$1" > 4-password.txt
