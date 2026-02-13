@@ -1,0 +1,6 @@
+#!/bin/bash
+# SELinux tərəfindən idarə olunan portları siyahılayır və HTTP ilə bağlı olanları göstərir
+
+# 'semanage port -l' bütün portları və onların etiketlərini göstərir
+# 'grep http' isə yalnız HTTP xidmətlərinə aid sətirləri seçir
+semanage port -l | grep http
