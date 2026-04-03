@@ -20,8 +20,6 @@ def find_heap_region(pid):
                     addr_range = parts[0].split("-")
                     heap_start = int(addr_range[0], 16)
                     heap_end = int(addr_range[1], 16)
-                    print("[*] Found heap: start=0x{:x}, end=0x{:x}".format(
-                        heap_start, heap_end))
                     return heap_start, heap_end
     except FileNotFoundError:
         print("Error: Cannot open {}. Is the PID correct?".format(maps_path))
@@ -61,7 +59,6 @@ def read_write_heap(pid, search_string, replace_string):
         sys.exit(1)
 
     found_addr = heap_start + offset
-    print("[*] Found '{}' at address: 0x{:x}".format(search_string, found_addr))
 
     if len(replace_bytes) > len(search_bytes):
         print("Error: replace_string is longer than search_string.")
@@ -73,10 +70,9 @@ def read_write_heap(pid, search_string, replace_string):
 
     mem_file.seek(found_addr)
     mem_file.write(replace_bytes_padded)
-    print("[*] Replaced '{}' with '{}' at 0x{:x}".format(
-        search_string, replace_string, found_addr))
-
     mem_file.close()
+
+    print("SUCCESS!")
 
 
 def main():
@@ -97,10 +93,6 @@ def main():
     if not search_string or not replace_string:
         print("Error: search_string and replace_string cannot be empty.")
         sys.exit(1)
-
-    print("[*] PID: {}".format(pid))
-    print("[*] Search string: '{}'".format(search_string))
-    print("[*] Replace string: '{}'".format(replace_string))
 
     read_write_heap(pid, search_string, replace_string)
 
